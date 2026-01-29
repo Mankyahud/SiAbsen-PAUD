@@ -8,13 +8,16 @@
     <title>👩‍🏫 SiAbsen PAUD</title>
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlNpQWJzZW4gUEFVRCIsCiAgInNob3J0X25hbWUiOiAiU2lBYnNlbiIsCiAgImRlc2NyaXB0aW9uIjogIkFwbGlrYXNpIEFic2Vuc2kgR3VydSBQQVVEIiwKICAic3RhcnRfdXJsIjogIi4vIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjRkZGRkZGIiwKICAidGhlbWVfY29sb3IiOiAiI0E4REFEQyIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIZHBaSFJvUFNJeE9USWlJR2hsYVdkb2REMGlNVGt5SWo0OGNtVmpkQ0IzYVdSMGFEMGlNVGt5SWlCb1pXbG5hSFE5SWpFNU1pSWdabWxzYkQwaUkwRTRSRUZFUXlJdlBqeDBaWGgwSUhnOUlqazJJaUI1UFNJeE1EQWlJR1pwYkd3OUlpTXdNREF3TURBaUlHWnZiblF0Wm1GdGFXeDVQU0pCY21saGJDSWdabTl1ZEMxemFYcGxQU0kwTmlJZ2RHVjRkQzFoYm1Ob2IzSTlJbTFwWkdSc1pTSStGRHd2ZEdWNGRENDhMM04yWno0PSIsCiAgICAgICJzaXplcyI6ICIxOTJ4MTkyIiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhkcFpIUm9QU0kxTVRJaUlHaGxhV2RvZEQwaU5URXlJajQ4Y21WamRDQjNhV1IwYUQwaU5URXlJaUJvWldsbmFIUTlJalV4TWlJZ1ptbHNiRDBpSTBFNFJFRkVReUl2UGp4MFpYaDBJSGc5SWpJMU5pSWdlVDBpTWpjMklpQm1hV3hzUFNJak1EQXdNREF3SWlCbWIyNTBMV1poYldsc2VUMGlRWEpwWVd3aUlHWnZiblF0YzJsNlpUMGlNVEkwSWlCMFpYaDBMV0Z1WTJodmNqMGliV2xrWkd4bElqNEZUand2ZEdWNGRENDhMM04yWno0PSIsCiAgICAgICJzaXplcyI6ICI1MTJ4NTEyIiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0KICBdCn0=">
+    <link rel="manifest" id="manifest-link">
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -27,6 +30,7 @@
             --info: #6DD5FA;
             --danger: #FF6B6B;
             --text-dark: #2D3142;
+            --purple: #9D84B7;
         }
         
         * {
@@ -40,39 +44,222 @@
             background: linear-gradient(135deg, var(--bg-cream) 0%, #FFF 100%);
             color: var(--text-dark);
             min-height: 100vh;
-            padding-bottom: 2rem;
+            overflow-x: hidden;
         }
         
-        h1, h2, h3, h4, h5 {
-            font-family: 'Baloo 2', cursive;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
         }
         
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: white;
-            padding: 2rem 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            border-radius: 0 0 30px 30px;
+        /* Auth Pages */
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--secondary) 100%);
+            padding: 20px;
+        }
+        
+        .auth-card {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            max-width: 450px;
+            width: 100%;
+            animation: slideUp 0.6s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .auth-logo {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .auth-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .auth-subtitle {
+            text-align: center;
+            color: #666;
             margin-bottom: 2rem;
         }
         
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 280px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+            padding: 2rem 1rem;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: transform 0.3s ease;
         }
         
+        .sidebar.mobile-hidden {
+            transform: translateX(-100%);
+        }
+        
+        .sidebar-brand {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: white;
+        }
+        
+        .sidebar-brand h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .sidebar-user {
+            background: rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .sidebar-user-avatar {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-size: 2rem;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar-menu-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-menu-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .sidebar-menu-link:hover,
+        .sidebar-menu-link.active {
+            background: rgba(255,255,255,0.3);
+            transform: translateX(5px);
+        }
+        
+        .sidebar-menu-link i {
+            margin-right: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .premium-badge {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: auto;
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 2rem;
+            min-height: 100vh;
+            transition: margin-left 0.3s ease;
+        }
+        
+        .main-content.full-width {
+            margin-left: 0;
+        }
+        
+        .mobile-header {
+            display: none;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: -2rem -2rem 2rem -2rem;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .page-header {
+            margin-bottom: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        /* Cards */
         .card {
             border: none;
             border-radius: 25px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.08);
             margin-bottom: 2rem;
             overflow: hidden;
+            animation: fadeInUp 0.6s ease;
             transition: transform 0.3s ease;
         }
         
         .card:hover {
             transform: translateY(-5px);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .card-header {
@@ -88,6 +275,51 @@
             padding: 2rem;
         }
         
+        /* Stats Cards */
+        .stat-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: scaleIn 0.5s ease;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        /* Forms */
         .form-label {
             font-weight: 600;
             color: var(--text-dark);
@@ -108,6 +340,7 @@
             box-shadow: 0 0 0 0.2rem rgba(168, 218, 220, 0.25);
         }
         
+        /* Buttons */
         .btn {
             border-radius: 20px;
             padding: 0.8rem 2rem;
@@ -163,6 +396,13 @@
             box-shadow: 0 4px 15px rgba(82, 183, 136, 0.4);
         }
         
+        .btn-purple {
+            background: linear-gradient(135deg, var(--purple) 0%, #C8B6E2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(157, 132, 183, 0.4);
+        }
+        
+        /* Tables */
         .table {
             border-radius: 15px;
             overflow: hidden;
@@ -176,6 +416,7 @@
         
         .table tbody tr {
             transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease;
         }
         
         .table tbody tr:hover {
@@ -183,6 +424,7 @@
             transform: scale(1.01);
         }
         
+        /* Badges */
         .badge {
             padding: 0.5rem 1rem;
             border-radius: 15px;
@@ -190,26 +432,12 @@
             font-size: 0.9rem;
         }
         
-        .badge-hadir {
-            background-color: var(--success);
-            color: white;
-        }
+        .badge-hadir { background-color: var(--success); color: white; }
+        .badge-izin { background-color: var(--warning); color: var(--text-dark); }
+        .badge-sakit { background-color: var(--info); color: white; }
+        .badge-alpha { background-color: var(--danger); color: white; }
         
-        .badge-izin {
-            background-color: var(--warning);
-            color: var(--text-dark);
-        }
-        
-        .badge-sakit {
-            background-color: var(--info);
-            color: white;
-        }
-        
-        .badge-alpha {
-            background-color: var(--danger);
-            color: white;
-        }
-        
+        /* Alerts */
         .alert {
             border-radius: 20px;
             border: none;
@@ -228,82 +456,144 @@
             }
         }
         
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        .data-row {
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .stat-card {
+        /* Subscription Cards */
+        .subscription-card {
             background: white;
-            border-radius: 20px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 1rem;
-            transition: transform 0.3s ease;
+            border-radius: 25px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
         }
         
-        .stat-card:hover {
-            transform: translateY(-5px);
+        .subscription-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
         
-        .stat-number {
-            font-size: 2.5rem;
+        .subscription-card.premium {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: white;
+        }
+        
+        .subscription-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
             font-weight: 700;
-            font-family: 'Baloo 2', cursive;
         }
         
-        .stat-label {
-            font-size: 1rem;
-            color: #666;
-            margin-top: 0.5rem;
+        .subscription-price {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            margin: 1rem 0;
         }
         
-        .btn-action {
-            border-radius: 10px;
-            padding: 0.4rem 0.8rem;
-            font-size: 0.85rem;
-            margin: 0 0.2rem;
+        .subscription-features {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
         }
         
-        .empty-state {
-            text-align: center;
-            padding: 3rem;
-            color: #999;
+        .subscription-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
         }
         
-        .empty-state img {
-            width: 150px;
+        .subscription-features li i {
+            margin-right: 0.8rem;
+            color: var(--success);
+        }
+        
+        .subscription-card.premium .subscription-features li i {
+            color: white;
+        }
+        
+        /* Loading Spinner */
+        .spinner-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .spinner-overlay.active {
+            display: flex;
+        }
+        
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Premium Lock */
+        .premium-lock {
+            position: relative;
+            pointer-events: none;
             opacity: 0.5;
-            margin-bottom: 1rem;
         }
         
+        .premium-lock::after {
+            content: '🔒 Premium';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--warning);
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            font-weight: 700;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8rem;
+            .sidebar {
+                transform: translateX(-100%);
             }
             
-            .card-body {
-                padding: 1.5rem;
+            .sidebar.mobile-show {
+                transform: translateX(0);
             }
             
-            .btn {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.95rem;
+            .main-content {
+                margin-left: 0;
             }
             
-            .table {
-                font-size: 0.85rem;
+            .mobile-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+            
+            .auth-card {
+                padding: 2rem;
             }
             
             .stat-number {
@@ -311,341 +601,937 @@
             }
         }
         
-        .install-prompt {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        /* Hide/Show Pages */
+        .page-content {
             display: none;
-            z-index: 1000;
-            animation: slideUp 0.5s ease;
         }
         
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .page-content.active {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="header">
-        <div class="container">
-            <h1 class="text-center mb-2">👩‍🏫 SiAbsen PAUD</h1>
-            <p class="text-center mb-0" style="font-size: 1.1rem;">Aplikasi Absensi Guru PAUD</p>
-        </div>
+
+    <!-- Loading Spinner -->
+    <div class="spinner-overlay" id="loadingSpinner">
+        <div class="spinner"></div>
     </div>
 
-    <div class="container">
-        <!-- Alert -->
-        <div id="alertContainer"></div>
-
-        <!-- Form Input Absensi -->
-        <div class="card">
-            <div class="card-header">
-                📝 Input Absensi Guru
-            </div>
-            <div class="card-body">
-                <form id="formAbsensi">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">👤 Nama Guru</label>
-                            <select class="form-select" id="namaGuru" required>
-                                <option value="">Pilih Guru...</option>
-                                <option value="Bu Siti Nurhaliza">Bu Siti Nurhaliza</option>
-                                <option value="Bu Ani Widya">Bu Ani Widya</option>
-                                <option value="Bu Dewi Lestari">Bu Dewi Lestari</option>
-                                <option value="Bu Rina Kartika">Bu Rina Kartika</option>
-                                <option value="Bu Maya Sari">Bu Maya Sari</option>
-                                <option value="Bu Fitri Handayani">Bu Fitri Handayani</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">📅 Tanggal</label>
-                            <input type="date" class="form-control" id="tanggal" required readonly>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">⏰ Jam Datang</label>
-                            <input type="time" class="form-control" id="jamDatang" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">🕐 Jam Pulang</label>
-                            <input type="time" class="form-control" id="jamPulang">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">✅ Status Kehadiran</label>
-                            <select class="form-select" id="status" required>
-                                <option value="">Pilih Status...</option>
-                                <option value="Hadir">✅ Hadir</option>
-                                <option value="Izin">📄 Izin</option>
-                                <option value="Sakit">🤒 Sakit</option>
-                                <option value="Alpha">❌ Alpha</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">📌 Keterangan (Opsional)</label>
-                            <input type="text" class="form-control" id="keterangan" placeholder="Contoh: Ada keperluan keluarga">
-                        </div>
+    <!-- Login Page -->
+    <div id="loginPage" class="page-content active">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-logo">👩‍🏫</div>
+                <h1 class="auth-title">SiAbsen PAUD</h1>
+                <p class="auth-subtitle">Masuk ke akun Anda</p>
+                
+                <div id="loginAlert"></div>
+                
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label class="form-label">📧 Email</label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="email@example.com" required>
                     </div>
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-primary">💾 Simpan Absensi</button>
+                    <div class="mb-3">
+                        <label class="form-label">🔒 Password</label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Minimal 6 karakter" required>
                     </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Ingat saya</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mb-3">🚀 Masuk</button>
                 </form>
-            </div>
-        </div>
-
-        <!-- Daftar Absensi Hari Ini -->
-        <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <span>📋 Daftar Absensi Hari Ini</span>
-                <span class="badge bg-light text-dark" id="todayDate"></span>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Guru</th>
-                                <th>Jam Datang</th>
-                                <th>Jam Pulang</th>
-                                <th>Status</th>
-                                <th>Keterangan</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody id="todayTableBody">
-                            <tr>
-                                <td colspan="7" class="empty-state">
-                                    <div>🎨</div>
-                                    <p>Belum ada data absensi hari ini</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Rekap Mingguan -->
-        <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <span>📊 Rekap Mingguan</span>
-                <div>
-                    <button class="btn btn-sm btn-warning" onclick="exportToExcel()">📊 Export Excel</button>
-                    <button class="btn btn-sm btn-danger" onclick="exportToPDF()">📄 Export PDF</button>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="row mb-4" id="statsContainer">
-                    <!-- Stats will be inserted here -->
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Guru</th>
-                                <th>Hadir</th>
-                                <th>Izin</th>
-                                <th>Sakit</th>
-                                <th>Alpha</th>
-                                <th>Total Hari</th>
-                            </tr>
-                        </thead>
-                        <tbody id="rekapTableBody">
-                            <tr>
-                                <td colspan="7" class="empty-state">
-                                    <div>📈</div>
-                                    <p>Belum ada data rekap minggu ini</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Reset Data -->
-        <div class="card">
-            <div class="card-header bg-danger text-white">
-                🗑️ Zona Berbahaya
-            </div>
-            <div class="card-body">
-                <p class="mb-3">⚠️ Hati-hati! Tindakan ini akan menghapus semua data absensi secara permanen.</p>
-                <button class="btn btn-danger" onclick="confirmReset()">🗑️ Reset Semua Data</button>
+                
+                <p class="text-center mb-0">
+                    Belum punya akun? <a href="#" onclick="showPage('registerPage')" class="text-decoration-none fw-bold">Daftar di sini</a>
+                </p>
             </div>
         </div>
     </div>
 
-    <!-- Install Prompt -->
-    <div class="install-prompt" id="installPrompt">
-        <p class="mb-2"><strong>📱 Install SiAbsen PAUD</strong></p>
-        <p class="mb-3" style="font-size: 0.9rem;">Akses lebih cepat dengan install aplikasi di perangkat Anda!</p>
-        <button class="btn btn-light btn-sm me-2" onclick="installApp()">Install</button>
-        <button class="btn btn-outline-light btn-sm" onclick="dismissInstall()">Nanti</button>
+    <!-- Register Page -->
+    <div id="registerPage" class="page-content">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-logo">✨</div>
+                <h1 class="auth-title">Daftar Akun</h1>
+                <p class="auth-subtitle">Buat akun baru Anda</p>
+                
+                <div id="registerAlert"></div>
+                
+                <form id="registerForm">
+                    <div class="mb-3">
+                        <label class="form-label">👤 Nama Lengkap</label>
+                        <input type="text" class="form-control" id="registerName" placeholder="Nama Anda" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">📧 Email</label>
+                        <input type="email" class="form-control" id="registerEmail" placeholder="email@example.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">🔒 Password</label>
+                        <input type="password" class="form-control" id="registerPassword" placeholder="Minimal 6 karakter" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">👥 Role</label>
+                        <select class="form-select" id="registerRole" required>
+                            <option value="">Pilih Role...</option>
+                            <option value="guru">Guru</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 mb-3">📝 Daftar</button>
+                </form>
+                
+                <p class="text-center mb-0">
+                    Sudah punya akun? <a href="#" onclick="showPage('loginPage')" class="text-decoration-none fw-bold">Masuk di sini</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="page-content">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <div style="font-size: 2.5rem;">👩‍🏫</div>
+                <h2>SiAbsen PAUD</h2>
+            </div>
+            
+            <div class="sidebar-user">
+                <div class="sidebar-user-avatar">
+                    <span id="userAvatar">👤</span>
+                </div>
+                <div class="fw-bold" id="userName">User</div>
+                <div class="small" id="userRole">Guru</div>
+                <div class="small mt-1">
+                    <span class="badge bg-light text-dark" id="userPlan">Free Plan</span>
+                </div>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-link active" onclick="navigateTo('dashboard')">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-link" onclick="navigateTo('absensi')">
+                        <i class="bi bi-clipboard-check"></i>
+                        <span>Absensi</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-link" onclick="navigateTo('rekap')">
+                        <i class="bi bi-graph-up"></i>
+                        <span>Rekap</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-link" onclick="navigateTo('subscription')">
+                        <i class="bi bi-star-fill"></i>
+                        <span>Berlangganan</span>
+                        <span class="premium-badge">Premium</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-link" onclick="logout()">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <!-- Mobile Header -->
+            <div class="mobile-header">
+                <button class="btn btn-primary btn-sm" onclick="toggleSidebar()">
+                    <i class="bi bi-list"></i> Menu
+                </button>
+                <div class="fw-bold">SiAbsen PAUD</div>
+            </div>
+
+            <!-- Dashboard Page -->
+            <div id="dashboardContent" class="content-section active">
+                <div class="page-header">
+                    <h1 class="page-title">📊 Dashboard</h1>
+                    <p class="page-subtitle">Selamat datang kembali! Lihat ringkasan absensi Anda</p>
+                </div>
+
+                <!-- Stats -->
+                <div class="row mb-4">
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #52B788, #74C69D);">
+                            <div class="stat-icon" style="color: white;">✅</div>
+                            <div class="stat-number" style="color: white;" id="statHadir">0</div>
+                            <div class="stat-label" style="color: rgba(255,255,255,0.9);">Hadir</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #FFD93D, #FFE066);">
+                            <div class="stat-icon">📄</div>
+                            <div class="stat-number" id="statIzin">0</div>
+                            <div class="stat-label">Izin</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #6DD5FA, #A8DADC);">
+                            <div class="stat-icon" style="color: white;">🤒</div>
+                            <div class="stat-number" style="color: white;" id="statSakit">0</div>
+                            <div class="stat-label" style="color: rgba(255,255,255,0.9);">Sakit</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #FF6B6B, #FF8787);">
+                            <div class="stat-icon" style="color: white;">❌</div>
+                            <div class="stat-number" style="color: white;" id="statAlpha">0</div>
+                            <div class="stat-label" style="color: rgba(255,255,255,0.9);">Alpha</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Attendance -->
+                <div class="card">
+                    <div class="card-header">
+                        📋 Absensi Terbaru
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Nama Guru</th>
+                                        <th>Jam Datang</th>
+                                        <th>Jam Pulang</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentAttendanceTable">
+                                    <tr>
+                                        <td colspan="5" class="text-center text-muted py-5">
+                                            📭 Belum ada data absensi
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Absensi Page -->
+            <div id="absensiContent" class="content-section">
+                <div class="page-header">
+                    <h1 class="page-title">📝 Input Absensi</h1>
+                    <p class="page-subtitle">Catat kehadiran guru hari ini</p>
+                </div>
+
+                <div id="absensiAlert"></div>
+
+                <!-- Input Form -->
+                <div class="card">
+                    <div class="card-header">
+                        ✏️ Form Absensi
+                    </div>
+                    <div class="card-body">
+                        <form id="absensiForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">👤 Nama Guru</label>
+                                    <select class="form-select" id="absensiNamaGuru" required>
+                                        <option value="">Pilih Guru...</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">📅 Tanggal</label>
+                                    <input type="date" class="form-control" id="absensiTanggal" required readonly>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">⏰ Jam Datang</label>
+                                    <input type="time" class="form-control" id="absensiJamDatang" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">🕐 Jam Pulang</label>
+                                    <input type="time" class="form-control" id="absensiJamPulang">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">✅ Status Kehadiran</label>
+                                    <select class="form-select" id="absensiStatus" required>
+                                        <option value="">Pilih Status...</option>
+                                        <option value="Hadir">✅ Hadir</option>
+                                        <option value="Izin">📄 Izin</option>
+                                        <option value="Sakit">🤒 Sakit</option>
+                                        <option value="Alpha">❌ Alpha</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">📌 Keterangan</label>
+                                    <input type="text" class="form-control" id="absensiKeterangan" placeholder="Opsional">
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <button type="button" class="btn btn-secondary me-2" onclick="resetAbsensiForm()">🔄 Reset</button>
+                                <button type="submit" class="btn btn-primary">💾 Simpan Absensi</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Today's List -->
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>📋 Daftar Absensi Hari Ini</span>
+                        <span class="badge bg-light text-dark" id="todayDateDisplay"></span>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Guru</th>
+                                        <th>Jam Datang</th>
+                                        <th>Jam Pulang</th>
+                                        <th>Status</th>
+                                        <th>Keterangan</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="todayAbsensiTable">
+                                    <tr>
+                                        <td colspan="7" class="text-center text-muted py-5">
+                                            🎨 Belum ada data absensi hari ini
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rekap Page -->
+            <div id="rekapContent" class="content-section">
+                <div class="page-header">
+                    <h1 class="page-title">📊 Rekap Absensi</h1>
+                    <p class="page-subtitle">Lihat rekap lengkap absensi guru</p>
+                </div>
+
+                <!-- Filter -->
+                <div class="card">
+                    <div class="card-header">
+                        🔍 Filter Rekap
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Periode</label>
+                                <select class="form-select" id="filterPeriode" onchange="loadRekapData()">
+                                    <option value="harian">Harian</option>
+                                    <option value="mingguan" selected>Mingguan</option>
+                                    <option value="bulanan">Bulanan</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Guru</label>
+                                <select class="form-select" id="filterGuru" onchange="loadRekapData()">
+                                    <option value="">Semua Guru</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Aksi</label>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-warning flex-fill" onclick="exportToExcel()" id="btnExportExcel">
+                                        📊 Excel
+                                    </button>
+                                    <button class="btn btn-danger flex-fill" onclick="exportToPDF()" id="btnExportPDF">
+                                        📄 PDF
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rekap Table -->
+                <div class="card">
+                    <div class="card-header">
+                        📈 Tabel Rekap
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Guru</th>
+                                        <th>Hadir</th>
+                                        <th>Izin</th>
+                                        <th>Sakit</th>
+                                        <th>Alpha</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="rekapTable">
+                                    <tr>
+                                        <td colspan="7" class="text-center text-muted py-5">
+                                            📈 Belum ada data rekap
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscription Page -->
+            <div id="subscriptionContent" class="content-section">
+                <div class="page-header">
+                    <h1 class="page-title">⭐ Paket Berlangganan</h1>
+                    <p class="page-subtitle">Upgrade ke Premium untuk fitur lengkap</p>
+                </div>
+
+                <div class="row">
+                    <!-- Free Plan -->
+                    <div class="col-md-6 mb-4">
+                        <div class="subscription-card">
+                            <div class="subscription-badge">GRATIS</div>
+                            <h3 class="fw-bold mb-2">Free Plan</h3>
+                            <div class="subscription-price">Rp 0</div>
+                            <p class="text-muted">Selamanya</p>
+                            
+                            <ul class="subscription-features">
+                                <li><i class="bi bi-check-circle-fill"></i> Input absensi harian</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Lihat rekap mingguan</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Dashboard statistik</li>
+                                <li><i class="bi bi-x-circle-fill text-danger"></i> Export Excel</li>
+                                <li><i class="bi bi-x-circle-fill text-danger"></i> Export PDF</li>
+                                <li><i class="bi bi-x-circle-fill text-danger"></i> Rekap bulanan detail</li>
+                            </ul>
+                            
+                            <button class="btn btn-secondary w-100" disabled>Paket Aktif</button>
+                        </div>
+                    </div>
+
+                    <!-- Premium Plan -->
+                    <div class="col-md-6 mb-4">
+                        <div class="subscription-card premium">
+                            <div class="subscription-badge">TERBAIK</div>
+                            <h3 class="fw-bold mb-2">Premium Plan</h3>
+                            <div class="subscription-price">Rp 50K</div>
+                            <p>Per bulan</p>
+                            
+                            <ul class="subscription-features">
+                                <li><i class="bi bi-check-circle-fill"></i> Semua fitur Free Plan</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Export ke Excel</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Export ke PDF</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Rekap bulanan lengkap</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Laporan siap cetak</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Prioritas support</li>
+                            </ul>
+                            
+                            <button class="btn btn-light w-100 fw-bold" onclick="upgradeToPremium()" id="btnUpgrade">
+                                🚀 Upgrade Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Modal -->
+                <div class="modal fade" id="paymentModal" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content" style="border-radius: 25px; overflow: hidden;">
+                            <div class="modal-header" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: white;">
+                                <h5 class="modal-title">💳 Pembayaran Premium</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <div class="text-center mb-4">
+                                    <div style="font-size: 4rem;">⭐</div>
+                                    <h4 class="fw-bold">Upgrade ke Premium</h4>
+                                    <p class="text-muted">Aktifkan semua fitur premium</p>
+                                </div>
+                                
+                                <div class="alert alert-info">
+                                    <strong>💰 Total Pembayaran:</strong> Rp 50.000
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Metode Pembayaran</label>
+                                    <select class="form-select" id="paymentMethod">
+                                        <option value="transfer">Transfer Bank</option>
+                                        <option value="ewallet">E-Wallet</option>
+                                        <option value="cod">Cash on Delivery</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <small><strong>⚠️ Catatan:</strong> Ini adalah simulasi pembayaran. Tidak ada transaksi nyata yang terjadi.</small>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="button" class="btn btn-success" onclick="processPayment()">✅ Bayar Sekarang</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- jsPDF Library for PDF Export -->
+    <!-- jsPDF Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
     
-    <!-- SheetJS for Excel Export -->
+    <!-- SheetJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
     <script>
-        // PWA Installation
-        let deferredPrompt;
-        
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById('installPrompt').style.display = 'block';
-        });
-        
-        function installApp() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    deferredPrompt = null;
-                    document.getElementById('installPrompt').style.display = 'none';
-                });
-            }
-        }
-        
-        function dismissInstall() {
-            document.getElementById('installPrompt').style.display = 'none';
-        }
-        
-        // Service Worker Registration
+        // PWA Manifest
+        const manifest = {
+            name: "SiAbsen PAUD",
+            short_name: "SiAbsen",
+            description: "Aplikasi Absensi Guru PAUD",
+            start_url: "./",
+            display: "standalone",
+            background_color: "#FFFFFF",
+            theme_color: "#A8DADC",
+            icons: [
+                {
+                    src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='75' font-size='75'%3E👩‍🏫%3C/text%3E%3C/svg%3E",
+                    sizes: "192x192",
+                    type: "image/svg+xml"
+                },
+                {
+                    src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='75' font-size='75'%3E👩‍🏫%3C/text%3E%3C/svg%3E",
+                    sizes: "512x512",
+                    type: "image/svg+xml"
+                }
+            ]
+        };
+
+        const manifestBlob = new Blob([JSON.stringify(manifest)], {type: 'application/json'});
+        const manifestURL = URL.createObjectURL(manifestBlob);
+        document.getElementById('manifest-link').setAttribute('href', manifestURL);
+
+        // Service Worker
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('data:text/javascript;base64,' + btoa(`
+            const swCode = `
                 const CACHE_NAME = 'siabsen-paud-v1';
-                const urlsToCache = ['/'];
-                
-                self.addEventListener('install', event => {
-                    event.waitUntil(
-                        caches.open(CACHE_NAME)
-                            .then(cache => cache.addAll(urlsToCache))
-                    );
+                self.addEventListener('install', e => {
+                    e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(['/'])));
                 });
-                
-                self.addEventListener('fetch', event => {
-                    event.respondWith(
-                        caches.match(event.request)
-                            .then(response => response || fetch(event.request))
-                    );
+                self.addEventListener('fetch', e => {
+                    e.respondWith(caches.match(e.request).then(r => r || fetch(e.request)));
                 });
-            `)).then(() => {
+            `;
+            const swBlob = new Blob([swCode], {type: 'text/javascript'});
+            const swURL = URL.createObjectURL(swBlob);
+            
+            navigator.serviceWorker.register(swURL).then(() => {
                 console.log('Service Worker registered');
             }).catch(err => {
                 console.log('Service Worker registration failed:', err);
             });
         }
-        
+
+        // Global Variables
+        let currentUser = null;
+        let currentEditId = null;
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            setTodayDate();
-            setCurrentTime();
-            loadTodayData();
-            loadRekapData();
-            updateTodayDateDisplay();
+            checkAuth();
+            initializeDefaultUsers();
         });
-        
-        // Set today's date
-        function setTodayDate() {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('tanggal').value = today;
+
+        // Initialize Default Users
+        function initializeDefaultUsers() {
+            let users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            if (users.length === 0) {
+                users = [
+                    {
+                        id: 1,
+                        name: 'Admin SiAbsen',
+                        email: 'admin@siabsen.com',
+                        password: btoa('admin123'),
+                        role: 'admin',
+                        plan: 'premium'
+                    },
+                    {
+                        id: 2,
+                        name: 'Bu Siti Nurhaliza',
+                        email: 'siti@siabsen.com',
+                        password: btoa('guru123'),
+                        role: 'guru',
+                        plan: 'free'
+                    }
+                ];
+                localStorage.setItem('users', JSON.stringify(users));
+            }
         }
-        
-        // Set current time
-        function setCurrentTime() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            document.getElementById('jamDatang').value = `${hours}:${minutes}`;
+
+        // Auth Functions
+        function checkAuth() {
+            const session = JSON.parse(localStorage.getItem('session') || 'null');
+            const rememberMe = localStorage.getItem('rememberMe') === 'true';
+            
+            if (session && (rememberMe || sessionStorage.getItem('loggedIn'))) {
+                currentUser = session;
+                showMainApp();
+            } else {
+                showPage('loginPage');
+            }
         }
-        
-        // Update today date display
-        function updateTodayDateDisplay() {
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const today = new Date().toLocaleDateString('id-ID', options);
-            document.getElementById('todayDate').textContent = today;
+
+        // Login Form
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const user = users.find(u => u.email === email && u.password === btoa(password));
+            
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('session', JSON.stringify(user));
+                
+                if (rememberMe) {
+                    localStorage.setItem('rememberMe', 'true');
+                } else {
+                    sessionStorage.setItem('loggedIn', 'true');
+                }
+                
+                showAlert('loginAlert', 'Login berhasil! Selamat datang ' + user.name, 'success');
+                
+                setTimeout(() => {
+                    showMainApp();
+                }, 1000);
+            } else {
+                showAlert('loginAlert', 'Email atau password salah!', 'danger');
+            }
+        });
+
+        // Register Form
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const role = document.getElementById('registerRole').value;
+            
+            if (password.length < 6) {
+                showAlert('registerAlert', 'Password minimal 6 karakter!', 'danger');
+                return;
+            }
+            
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            if (users.find(u => u.email === email)) {
+                showAlert('registerAlert', 'Email sudah terdaftar!', 'danger');
+                return;
+            }
+            
+            const newUser = {
+                id: Date.now(),
+                name: name,
+                email: email,
+                password: btoa(password),
+                role: role,
+                plan: 'free'
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            showAlert('registerAlert', 'Registrasi berhasil! Silakan login.', 'success');
+            
+            setTimeout(() => {
+                showPage('loginPage');
+            }, 2000);
+        });
+
+        // Show Main App
+        function showMainApp() {
+            showPage('mainApp');
+            updateUserInfo();
+            loadGuruList();
+            navigateTo('dashboard');
+            updatePremiumAccess();
         }
-        
+
+        // Update User Info
+        function updateUserInfo() {
+            document.getElementById('userName').textContent = currentUser.name;
+            document.getElementById('userRole').textContent = currentUser.role === 'admin' ? 'Administrator' : 'Guru';
+            document.getElementById('userPlan').textContent = currentUser.plan === 'premium' ? '⭐ Premium' : 'Free Plan';
+            document.getElementById('userAvatar').textContent = currentUser.role === 'admin' ? '👨‍💼' : '👩‍🏫';
+            
+            if (currentUser.plan === 'premium') {
+                document.getElementById('userPlan').classList.remove('bg-light', 'text-dark');
+                document.getElementById('userPlan').classList.add('bg-warning', 'text-dark');
+            }
+        }
+
+        // Logout
+        function logout() {
+            if (confirm('Yakin ingin logout?')) {
+                localStorage.removeItem('session');
+                localStorage.removeItem('rememberMe');
+                sessionStorage.removeItem('loggedIn');
+                currentUser = null;
+                showPage('loginPage');
+            }
+        }
+
+        // Show Page
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
         // Show Alert
-        function showAlert(message, type = 'success') {
-            const alertDiv = document.createElement('div');
-            alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-            alertDiv.innerHTML = `
+        function showAlert(containerId, message, type) {
+            const container = document.getElementById(containerId);
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type} alert-dismissible fade show`;
+            alert.innerHTML = `
                 ${message}
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             `;
-            document.getElementById('alertContainer').appendChild(alertDiv);
+            container.innerHTML = '';
+            container.appendChild(alert);
             
             setTimeout(() => {
-                alertDiv.remove();
-            }, 3000);
+                alert.remove();
+            }, 5000);
         }
-        
-        // Form Submit
-        document.getElementById('formAbsensi').addEventListener('submit', function(e) {
+
+        // Navigation
+        function navigateTo(section) {
+            // Update active menu
+            document.querySelectorAll('.sidebar-menu-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.closest('.sidebar-menu-link').classList.add('active');
+            
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show selected section
+            const sectionMap = {
+                'dashboard': 'dashboardContent',
+                'absensi': 'absensiContent',
+                'rekap': 'rekapContent',
+                'subscription': 'subscriptionContent'
+            };
+            
+            document.getElementById(sectionMap[section]).classList.add('active');
+            
+            // Load data based on section
+            if (section === 'dashboard') {
+                loadDashboardData();
+            } else if (section === 'absensi') {
+                loadAbsensiPage();
+            } else if (section === 'rekap') {
+                loadRekapPage();
+            }
+            
+            // Close mobile sidebar
+            if (window.innerWidth < 768) {
+                document.getElementById('sidebar').classList.remove('mobile-show');
+            }
+        }
+
+        // Toggle Sidebar
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('mobile-show');
+        }
+
+        // Load Guru List
+        function loadGuruList() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const guruList = users.filter(u => u.role === 'guru');
+            
+            const selectElements = [
+                document.getElementById('absensiNamaGuru'),
+                document.getElementById('filterGuru')
+            ];
+            
+            selectElements.forEach(select => {
+                if (select) {
+                    const currentValue = select.value;
+                    const isFilterGuru = select.id === 'filterGuru';
+                    
+                    select.innerHTML = isFilterGuru ? '<option value="">Semua Guru</option>' : '<option value="">Pilih Guru...</option>';
+                    
+                    guruList.forEach(guru => {
+                        const option = document.createElement('option');
+                        option.value = guru.name;
+                        option.textContent = guru.name;
+                        select.appendChild(option);
+                    });
+                    
+                    select.value = currentValue;
+                }
+            });
+        }
+
+        // Load Dashboard Data
+        function loadDashboardData() {
+            const absensiData = JSON.parse(localStorage.getItem('absensiData') || '[]');
+            
+            // Calculate stats
+            const stats = {
+                hadir: 0,
+                izin: 0,
+                sakit: 0,
+                alpha: 0
+            };
+            
+            absensiData.forEach(item => {
+                const status = item.status.toLowerCase();
+                if (stats[status] !== undefined) {
+                    stats[status]++;
+                }
+            });
+            
+            // Update stats
+            document.getElementById('statHadir').textContent = stats.hadir;
+            document.getElementById('statIzin').textContent = stats.izin;
+            document.getElementById('statSakit').textContent = stats.sakit;
+            document.getElementById('statAlpha').textContent = stats.alpha;
+            
+            // Load recent attendance
+            const recentData = absensiData.slice(-5).reverse();
+            const tbody = document.getElementById('recentAttendanceTable');
+            
+            if (recentData.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-5">
+                            📭 Belum ada data absensi
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tbody.innerHTML = '';
+            recentData.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${formatDate(item.tanggal)}</td>
+                    <td><strong>${item.namaGuru}</strong></td>
+                    <td>${item.jamDatang}</td>
+                    <td>${item.jamPulang || '-'}</td>
+                    <td><span class="badge badge-${item.status.toLowerCase()}">${item.status}</span></td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Load Absensi Page
+        function loadAbsensiPage() {
+            // Set today's date
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('absensiTanggal').value = today;
+            
+            // Set current time
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('absensiJamDatang').value = `${hours}:${minutes}`;
+            
+            // Update date display
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const todayDisplay = new Date().toLocaleDateString('id-ID', options);
+            document.getElementById('todayDateDisplay').textContent = todayDisplay;
+            
+            // Load today's data
+            loadTodayAbsensi();
+        }
+
+        // Absensi Form Submit
+        document.getElementById('absensiForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const data = {
-                id: Date.now(),
-                namaGuru: document.getElementById('namaGuru').value,
-                tanggal: document.getElementById('tanggal').value,
-                jamDatang: document.getElementById('jamDatang').value,
-                jamPulang: document.getElementById('jamPulang').value || '-',
-                status: document.getElementById('status').value,
-                keterangan: document.getElementById('keterangan').value || '-'
+                id: currentEditId || Date.now(),
+                namaGuru: document.getElementById('absensiNamaGuru').value,
+                tanggal: document.getElementById('absensiTanggal').value,
+                jamDatang: document.getElementById('absensiJamDatang').value,
+                jamPulang: document.getElementById('absensiJamPulang').value || '-',
+                status: document.getElementById('absensiStatus').value,
+                keterangan: document.getElementById('absensiKeterangan').value || '-',
+                createdBy: currentUser.name,
+                createdAt: new Date().toISOString()
             };
             
-            // Save to localStorage
             let absensiData = JSON.parse(localStorage.getItem('absensiData') || '[]');
-            absensiData.push(data);
+            
+            if (currentEditId) {
+                // Update existing
+                const index = absensiData.findIndex(item => item.id === currentEditId);
+                if (index !== -1) {
+                    absensiData[index] = data;
+                }
+                showAlert('absensiAlert', '✅ Data absensi berhasil diupdate!', 'success');
+                currentEditId = null;
+            } else {
+                // Add new
+                absensiData.push(data);
+                showAlert('absensiAlert', '✅ Data absensi berhasil disimpan!', 'success');
+            }
+            
             localStorage.setItem('absensiData', JSON.stringify(absensiData));
             
-            showAlert('✅ Data absensi berhasil disimpan!', 'success');
-            
-            // Reset form
-            this.reset();
-            setTodayDate();
-            setCurrentTime();
-            
-            // Reload data
-            loadTodayData();
-            loadRekapData();
+            resetAbsensiForm();
+            loadTodayAbsensi();
+            loadDashboardData();
         });
-        
-        // Load Today's Data
-        function loadTodayData() {
+
+        // Reset Absensi Form
+        function resetAbsensiForm() {
+            document.getElementById('absensiForm').reset();
+            currentEditId = null;
+            loadAbsensiPage();
+        }
+
+        // Load Today Absensi
+        function loadTodayAbsensi() {
             const today = new Date().toISOString().split('T')[0];
             const absensiData = JSON.parse(localStorage.getItem('absensiData') || '[]');
             const todayData = absensiData.filter(item => item.tanggal === today);
             
-            const tbody = document.getElementById('todayTableBody');
+            const tbody = document.getElementById('todayAbsensiTable');
             
             if (todayData.length === 0) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="7" class="empty-state">
-                            <div>🎨</div>
-                            <p>Belum ada data absensi hari ini</p>
+                        <td colspan="7" class="text-center text-muted py-5">
+                            🎨 Belum ada data absensi hari ini
                         </td>
                     </tr>
                 `;
@@ -655,7 +1541,8 @@
             tbody.innerHTML = '';
             todayData.forEach((item, index) => {
                 const row = document.createElement('tr');
-                row.className = 'data-row';
+                const canEdit = currentUser.role === 'admin' || item.createdBy === currentUser.name;
+                
                 row.innerHTML = `
                     <td>${index + 1}</td>
                     <td><strong>${item.namaGuru}</strong></td>
@@ -664,31 +1551,87 @@
                     <td><span class="badge badge-${item.status.toLowerCase()}">${item.status}</span></td>
                     <td>${item.keterangan}</td>
                     <td>
-                        <button class="btn btn-sm btn-warning btn-action" onclick="editData(${item.id})">✏️</button>
-                        <button class="btn btn-sm btn-danger btn-action" onclick="deleteData(${item.id})">🗑️</button>
+                        ${canEdit ? `
+                            <button class="btn btn-sm btn-warning" onclick="editAbsensi(${item.id})">✏️</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteAbsensi(${item.id})">🗑️</button>
+                        ` : '-'}
                     </td>
                 `;
                 tbody.appendChild(row);
             });
         }
-        
+
+        // Edit Absensi
+        function editAbsensi(id) {
+            const absensiData = JSON.parse(localStorage.getItem('absensiData') || '[]');
+            const data = absensiData.find(item => item.id === id);
+            
+            if (data) {
+                currentEditId = id;
+                document.getElementById('absensiNamaGuru').value = data.namaGuru;
+                document.getElementById('absensiTanggal').value = data.tanggal;
+                document.getElementById('absensiJamDatang').value = data.jamDatang;
+                document.getElementById('absensiJamPulang').value = data.jamPulang === '-' ? '' : data.jamPulang;
+                document.getElementById('absensiStatus').value = data.status;
+                document.getElementById('absensiKeterangan').value = data.keterangan === '-' ? '' : data.keterangan;
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                showAlert('absensiAlert', '✏️ Mode edit aktif. Silakan ubah data dan klik Simpan.', 'info');
+            }
+        }
+
+        // Delete Absensi
+        function deleteAbsensi(id) {
+            if (confirm('🗑️ Yakin ingin menghapus data ini?')) {
+                let absensiData = JSON.parse(localStorage.getItem('absensiData') || '[]');
+                absensiData = absensiData.filter(item => item.id !== id);
+                localStorage.setItem('absensiData', JSON.stringify(absensiData));
+                
+                showAlert('absensiAlert', '✅ Data berhasil dihapus!', 'warning');
+                loadTodayAbsensi();
+                loadDashboardData();
+            }
+        }
+
+        // Load Rekap Page
+        function loadRekapPage() {
+            loadGuruList();
+            loadRekapData();
+        }
+
         // Load Rekap Data
         function loadRekapData() {
+            const periode = document.getElementById('filterPeriode').value;
+            const filterGuruValue = document.getElementById('filterGuru').value;
+            
             const absensiData = JSON.parse(localStorage.getItem('absensiData') || '[]');
             
-            // Get current week's data (7 days back from today)
+            // Filter by period
             const today = new Date();
-            const weekAgo = new Date(today);
-            weekAgo.setDate(today.getDate() - 7);
-            
-            const weekData = absensiData.filter(item => {
+            let filteredData = absensiData.filter(item => {
                 const itemDate = new Date(item.tanggal);
-                return itemDate >= weekAgo && itemDate <= today;
+                
+                if (periode === 'harian') {
+                    return item.tanggal === today.toISOString().split('T')[0];
+                } else if (periode === 'mingguan') {
+                    const weekAgo = new Date(today);
+                    weekAgo.setDate(today.getDate() - 7);
+                    return itemDate >= weekAgo && itemDate <= today;
+                } else if (periode === 'bulanan') {
+                    return itemDate.getMonth() === today.getMonth() && 
+                           itemDate.getFullYear() === today.getFullYear();
+                }
+                return true;
             });
+            
+            // Filter by guru
+            if (filterGuruValue) {
+                filteredData = filteredData.filter(item => item.namaGuru === filterGuruValue);
+            }
             
             // Group by teacher
             const rekapByGuru = {};
-            weekData.forEach(item => {
+            filteredData.forEach(item => {
                 if (!rekapByGuru[item.namaGuru]) {
                     rekapByGuru[item.namaGuru] = {
                         hadir: 0,
@@ -704,18 +1647,14 @@
                 }
             });
             
-            // Update stats
-            updateStats(weekData);
-            
             // Update table
-            const tbody = document.getElementById('rekapTableBody');
+            const tbody = document.getElementById('rekapTable');
             
             if (Object.keys(rekapByGuru).length === 0) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="7" class="empty-state">
-                            <div>📈</div>
-                            <p>Belum ada data rekap minggu ini</p>
+                        <td colspan="7" class="text-center text-muted py-5">
+                            📈 Belum ada data rekap untuk periode ini
                         </td>
                     </tr>
                 `;
@@ -727,7 +1666,6 @@
             for (const [guru, stats] of Object.entries(rekapByGuru)) {
                 const total = stats.hadir + stats.izin + stats.sakit + stats.alpha;
                 const row = document.createElement('tr');
-                row.className = 'data-row';
                 row.innerHTML = `
                     <td>${index}</td>
                     <td><strong>${guru}</strong></td>
@@ -741,179 +1679,188 @@
                 index++;
             }
         }
-        
-        // Update Statistics
-        function updateStats(weekData) {
-            const stats = {
-                hadir: 0,
-                izin: 0,
-                sakit: 0,
-                alpha: 0
-            };
-            
-            weekData.forEach(item => {
-                const status = item.status.toLowerCase();
-                if (stats[status] !== undefined) {
-                    stats[status]++;
-                }
-            });
-            
-            const container = document.getElementById('statsContainer');
-            container.innerHTML = `
-                <div class="col-6 col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number text-success">${stats.hadir}</div>
-                        <div class="stat-label">✅ Hadir</div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number" style="color: var(--warning);">${stats.izin}</div>
-                        <div class="stat-label">📄 Izin</div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number" style="color: var(--info);">${stats.sakit}</div>
-                        <div class="stat-label">🤒 Sakit</div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number" style="color: var(--danger);">${stats.alpha}</div>
-                        <div class="stat-label">❌ Alpha</div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        // Delete Data
-        function deleteData(id) {
-            if (confirm('🗑️ Yakin ingin menghapus data ini?')) {
-                let absensiData = JSON.parse(localStorage.getItem('absensiData') || '[]');
-                absensiData = absensiData.filter(item => item.id !== id);
-                localStorage.setItem('absensiData', JSON.stringify(absensiData));
-                
-                showAlert('✅ Data berhasil dihapus!', 'warning');
-                loadTodayData();
-                loadRekapData();
-            }
-        }
-        
-        // Edit Data
-        function editData(id) {
-            const absensiData = JSON.parse(localStorage.getItem('absensiData') || '[]');
-            const data = absensiData.find(item => item.id === id);
-            
-            if (data) {
-                document.getElementById('namaGuru').value = data.namaGuru;
-                document.getElementById('tanggal').value = data.tanggal;
-                document.getElementById('jamDatang').value = data.jamDatang;
-                document.getElementById('jamPulang').value = data.jamPulang === '-' ? '' : data.jamPulang;
-                document.getElementById('status').value = data.status;
-                document.getElementById('keterangan').value = data.keterangan === '-' ? '' : data.keterangan;
-                
-                // Delete old data
-                deleteData(id);
-                
-                // Scroll to form
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                showAlert('✏️ Data dimuat untuk diedit. Klik Simpan setelah selesai!', 'info');
-            }
-        }
-        
+
         // Export to Excel
         function exportToExcel() {
-            const absensiData = JSON.parse(localStorage.getItem('absensiData') || '[]');
-            
-            if (absensiData.length === 0) {
-                showAlert('❌ Tidak ada data untuk diexport!', 'danger');
+            if (currentUser.plan !== 'premium') {
+                alert('🔒 Fitur ini hanya tersedia untuk pengguna Premium!\n\nUpgrade ke Premium untuk menggunakan fitur export.');
                 return;
             }
             
-            // Prepare data
-            const exportData = absensiData.map((item, index) => ({
-                'No': index + 1,
-                'Nama Guru': item.namaGuru,
-                'Tanggal': item.tanggal,
-                'Jam Datang': item.jamDatang,
-                'Jam Pulang': item.jamPulang,
-                'Status': item.status,
-                'Keterangan': item.keterangan
-            }));
+            const absensiData = JSON.parse(localStorage.getItem('absensiData') || '[]');
             
-            // Create worksheet
-            const ws = XLSX.utils.json_to_sheet(exportData);
-            const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, 'Absensi');
+            if (absensiData.length === 0) {
+                alert('❌ Tidak ada data untuk diexport!');
+                return;
+            }
             
-            // Generate filename
-            const filename = `Absensi_PAUD_${new Date().toISOString().split('T')[0]}.xlsx`;
+            showLoading(true);
             
-            // Download
-            XLSX.writeFile(wb, filename);
-            showAlert('✅ Data berhasil diexport ke Excel!', 'success');
+            setTimeout(() => {
+                const exportData = absensiData.map((item, index) => ({
+                    'No': index + 1,
+                    'Nama Guru': item.namaGuru,
+                    'Tanggal': item.tanggal,
+                    'Jam Datang': item.jamDatang,
+                    'Jam Pulang': item.jamPulang,
+                    'Status': item.status,
+                    'Keterangan': item.keterangan,
+                    'Dibuat Oleh': item.createdBy
+                }));
+                
+                const ws = XLSX.utils.json_to_sheet(exportData);
+                const wb = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wb, ws, 'Absensi');
+                
+                const filename = `Absensi_PAUD_${new Date().toISOString().split('T')[0]}.xlsx`;
+                XLSX.writeFile(wb, filename);
+                
+                showLoading(false);
+                alert('✅ Data berhasil diexport ke Excel!');
+            }, 1500);
         }
-        
+
         // Export to PDF
         function exportToPDF() {
-            const absensiData = JSON.parse(localStorage.getItem('absensiData') || '[]');
-            
-            if (absensiData.length === 0) {
-                showAlert('❌ Tidak ada data untuk diexport!', 'danger');
+            if (currentUser.plan !== 'premium') {
+                alert('🔒 Fitur ini hanya tersedia untuk pengguna Premium!\n\nUpgrade ke Premium untuk menggunakan fitur export.');
                 return;
             }
             
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+            const absensiData = JSON.parse(localStorage.getItem('absensiData') || '[]');
             
-            // Add title
-            doc.setFontSize(18);
-            doc.text('Laporan Absensi Guru PAUD', 14, 22);
+            if (absensiData.length === 0) {
+                alert('❌ Tidak ada data untuk diexport!');
+                return;
+            }
             
-            doc.setFontSize(11);
-            doc.text(`Tanggal Export: ${new Date().toLocaleDateString('id-ID')}`, 14, 30);
+            showLoading(true);
             
-            // Prepare table data
-            const tableData = absensiData.map((item, index) => [
-                index + 1,
-                item.namaGuru,
-                item.tanggal,
-                item.jamDatang,
-                item.jamPulang,
-                item.status,
-                item.keterangan
-            ]);
-            
-            // Add table
-            doc.autoTable({
-                startY: 35,
-                head: [['No', 'Nama Guru', 'Tanggal', 'Jam Datang', 'Jam Pulang', 'Status', 'Keterangan']],
-                body: tableData,
-                theme: 'striped',
-                headStyles: { fillColor: [168, 218, 220] },
-                styles: { fontSize: 9 }
-            });
-            
-            // Save
-            const filename = `Absensi_PAUD_${new Date().toISOString().split('T')[0]}.pdf`;
-            doc.save(filename);
-            showAlert('✅ Data berhasil diexport ke PDF!', 'success');
+            setTimeout(() => {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                // Title
+                doc.setFontSize(18);
+                doc.text('Laporan Absensi Guru PAUD', 14, 22);
+                
+                doc.setFontSize(11);
+                doc.text(`Tanggal Export: ${new Date().toLocaleDateString('id-ID')}`, 14, 30);
+                doc.text(`Dicetak oleh: ${currentUser.name}`, 14, 36);
+                
+                // Table
+                const tableData = absensiData.map((item, index) => [
+                    index + 1,
+                    item.namaGuru,
+                    item.tanggal,
+                    item.jamDatang,
+                    item.jamPulang,
+                    item.status,
+                    item.keterangan
+                ]);
+                
+                doc.autoTable({
+                    startY: 42,
+                    head: [['No', 'Nama Guru', 'Tanggal', 'Jam Datang', 'Jam Pulang', 'Status', 'Keterangan']],
+                    body: tableData,
+                    theme: 'striped',
+                    headStyles: { fillColor: [168, 218, 220] },
+                    styles: { fontSize: 9 }
+                });
+                
+                const filename = `Absensi_PAUD_${new Date().toISOString().split('T')[0]}.pdf`;
+                doc.save(filename);
+                
+                showLoading(false);
+                alert('✅ Data berhasil diexport ke PDF!');
+            }, 1500);
         }
-        
-        // Confirm Reset
-        function confirmReset() {
-            const confirmation = prompt('⚠️ PERINGATAN!\n\nKetik "HAPUS SEMUA" untuk menghapus semua data:');
+
+        // Update Premium Access
+        function updatePremiumAccess() {
+            const isPremium = currentUser.plan === 'premium';
             
-            if (confirmation === 'HAPUS SEMUA') {
-                localStorage.removeItem('absensiData');
-                showAlert('✅ Semua data berhasil dihapus!', 'warning');
-                loadTodayData();
-                loadRekapData();
-            } else if (confirmation !== null) {
-                showAlert('❌ Reset dibatalkan. Kata kunci salah!', 'danger');
+            // Update export buttons
+            const btnExportExcel = document.getElementById('btnExportExcel');
+            const btnExportPDF = document.getElementById('btnExportPDF');
+            
+            if (!isPremium) {
+                btnExportExcel.innerHTML = '🔒 Excel (Premium)';
+                btnExportPDF.innerHTML = '🔒 PDF (Premium)';
+            }
+            
+            // Update upgrade button
+            const btnUpgrade = document.getElementById('btnUpgrade');
+            if (isPremium) {
+                btnUpgrade.textContent = '✅ Paket Aktif';
+                btnUpgrade.disabled = true;
             }
         }
+
+        // Upgrade to Premium
+        function upgradeToPremium() {
+            if (currentUser.plan === 'premium') {
+                alert('✅ Anda sudah menggunakan paket Premium!');
+                return;
+            }
+            
+            const modal = new bootstrap.Modal(document.getElementById('paymentModal'));
+            modal.show();
+        }
+
+        // Process Payment
+        function processPayment() {
+            showLoading(true);
+            
+            setTimeout(() => {
+                // Update user plan
+                currentUser.plan = 'premium';
+                
+                // Update in users list
+                let users = JSON.parse(localStorage.getItem('users') || '[]');
+                const userIndex = users.findIndex(u => u.id === currentUser.id);
+                if (userIndex !== -1) {
+                    users[userIndex].plan = 'premium';
+                    localStorage.setItem('users', JSON.stringify(users));
+                }
+                
+                // Update session
+                localStorage.setItem('session', JSON.stringify(currentUser));
+                
+                showLoading(false);
+                
+                const modal = bootstrap.Modal.getInstance(document.getElementById('paymentModal'));
+                modal.hide();
+                
+                alert('🎉 Selamat! Akun Anda telah diupgrade ke Premium!\n\nAnda sekarang dapat menggunakan semua fitur premium.');
+                
+                updateUserInfo();
+                updatePremiumAccess();
+            }, 2000);
+        }
+
+        // Show Loading
+        function showLoading(show) {
+            const spinner = document.getElementById('loadingSpinner');
+            if (show) {
+                spinner.classList.add('active');
+            } else {
+                spinner.classList.remove('active');
+            }
+        }
+
+        // Format Date
+        function formatDate(dateString) {
+            const options = { day: '2-digit', month: 'short', year: 'numeric' };
+            return new Date(dateString).toLocaleDateString('id-ID', options);
+        }
+
+        // Responsive Sidebar
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                document.getElementById('sidebar').classList.remove('mobile-show');
+            }
+        });
     </script>
 </body>
 </html>
