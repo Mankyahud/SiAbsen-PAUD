@@ -2,4 +2,49 @@
 <nav class="navbar"><div class="container nav-inner"><a class="brand" href="index.html"><img class="brand-logo" src="logo.png" alt="Logo SiPaud" width="40" height="40">SiPaud</a><button class="menu-btn">☰</button><div class="nav-links"><a href="index.html">Home</a><a href="fitur.html" target="_blank" rel="noopener">Fitur</a><a href="service.html" target="_blank" rel="noopener">Service</a><a class="active" href="blog.html">Blog</a><a href="contact.html" target="_blank" rel="noopener">Contact</a></div></div></nav>
 <header class="page-hero"><div class="container"><span class="eyebrow">Blog</span><h1>Artikel dan informasi SiPaud</h1><p>Halaman blog disiapkan untuk artikel yang benar-benar diterbitkan oleh pengelola SiPaud.</p></div></header>
 <section class="section"><div class="container"><div class="blog-placeholder"><div style="font-size:2.5rem">📝</div><h2>Belum ada artikel yang diterbitkan</h2><p>Artikel akan muncul di halaman ini setelah konten nyata ditambahkan. Dengan begitu, website tidak menampilkan judul, tanggal, penulis, atau jumlah pembaca fiktif.</p></div></div></section>
+<section class="section soft" id="bukti">
+  <div class="container">
+    <div style="text-align:center">
+      <span class="eyebrow">Dokumentasi</span>
+      <h2 class="title">Bukti Transaksi &amp; Percakapan</h2>
+      <p class="desc">Dokumentasi pembayaran dan percakapan bersama TU PAUD Winong. Klik gambar untuk memperbesar.</p>
+    </div>
+    <div class="proof-grid">
+      <figure class="proof-card">
+        <div class="proof-bar"><span class="dot" style="background:#ff6b6b"></span><span class="dot" style="background:#ffd166"></span><span class="dot" style="background:#4cd68a"></span><span class="proof-label">Percakapan WhatsApp</span></div>
+        <button type="button" class="proof-media" data-zoom aria-label="Perbesar gambar percakapan WhatsApp">
+          <img src="image.png" alt="Percakapan WhatsApp dengan TU PAUD Winong" loading="lazy">
+          <span class="proof-missing">Gambar <b>image.png</b> belum ditemukan</span>
+          <span class="proof-zoom">🔍 Perbesar</span>
+        </button>
+        <figcaption><strong>Chat dengan TU PAUD Winong</strong><span>Konfirmasi pembayaran dan pengiriman tautan aplikasi SiPaud.</span></figcaption>
+      </figure>
+      <figure class="proof-card">
+        <div class="proof-bar"><span class="dot" style="background:#ff6b6b"></span><span class="dot" style="background:#ffd166"></span><span class="dot" style="background:#4cd68a"></span><span class="proof-label">Bukti Transfer</span></div>
+        <button type="button" class="proof-media" data-zoom aria-label="Perbesar gambar bukti transaksi">
+          <img src="transaksi.jpg.jpeg" alt="Bukti transaksi pembayaran" loading="lazy">
+          <span class="proof-missing">Gambar <b>transaksi.jpg.jpeg</b> belum ditemukan</span>
+          <span class="proof-zoom">🔍 Perbesar</span>
+        </button>
+        <figcaption><strong>Bukti transaksi pembayaran</strong><span>Bukti transfer yang diterima pihak sekolah.</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<dialog class="proof-dialog" id="proofDialog"><button type="button" class="proof-close" aria-label="Tutup">✕</button><img alt=""></dialog>
+<script>
+(function(){
+  var dlg=document.getElementById('proofDialog'); if(!dlg) return;
+  var big=dlg.querySelector('img');
+  document.querySelectorAll('.proof-media').forEach(function(btn){
+    var img=btn.querySelector('img');
+    img.addEventListener('error',function(){btn.classList.add('is-missing');});
+    btn.addEventListener('click',function(){
+      if(btn.classList.contains('is-missing')) return;
+      big.src=img.currentSrc||img.src; big.alt=img.alt; dlg.showModal();
+    });
+  });
+  dlg.addEventListener('click',function(e){ if(e.target!==big) dlg.close(); });
+})();
+</script>
 <footer class="footer"><div class="container"><p>SiPaud — “Mudah Absensinya, Ceria Belajarnya.” · <a data-wa href="#">WhatsApp +62 851-7436-0195</a></p><div class="copy">© 2026 SiPaud.</div></div></footer><script src="script.js"></script></body></html>
